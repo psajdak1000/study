@@ -1,9 +1,9 @@
-package swing.bootcamp.week5.polymorphism;
+package bootcamp.week5.polymorphism;
 
 public class Cabriolet implements Car {
     private boolean roofOpened;
 
-    public Cabriolet(final String color, final boolean roofOpened) {
+    public Cabriolet( final boolean roofOpened) {
         this.roofOpened = roofOpened;
     }
 

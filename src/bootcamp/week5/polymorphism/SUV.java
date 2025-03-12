@@ -1,10 +1,10 @@
-package swing.bootcamp.week5.polymorphism;
+package bootcamp.week5.polymorphism;
 
 public class SUV implements Car {
 
     private double height;
 
-    public SUV(final String color,final double height) {
+    public SUV(final double height) {
 
         this.height = height;
     }

@@ -1,4 +1,4 @@
-package swing.bootcamp.week5.polymorphism;
+package bootcamp.week5.polymorphism;
 
 public interface Car {
      void description();

@@ -1,4 +1,4 @@
-package swing.bootcamp.week5.interfaceExamples;
+package bootcamp.week5.interfaceExamples;
 
 public class Main {
     public static void main(String[] args) {
