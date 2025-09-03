@@ -9,4 +9,7 @@ public class Sock <T>{
         }
         return false;
     }
+    public T getItem(){
+        return item;
+    }
 }
