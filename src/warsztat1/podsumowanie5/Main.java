@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Sock<List<String>> sock1 = new Sock<>();
-        //21minuta
-        System.out.println(sock1.put(List.of("arms","bionicle","cash","dinosaur")));;
+        Sock<Runnable<String>> sock1 = new Sock<>();
+        //25minuta
+        sock1.put(new Run());
         System.out.println(sock1.getItem());
     }
 
