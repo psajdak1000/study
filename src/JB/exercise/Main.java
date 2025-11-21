@@ -6,10 +6,14 @@ public class Main {
         int sum = 0;
         int min = 1_000_000;
         int max = -100_000_000;
+        long lo = 3200000000000000000L;
+        short holder ;
         int positives = 0;
         int negatives = 0;
         int[] ratings = {5, 3, 4, 2, 1, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5};//przykładowe oceny
 
+        holder = (short)lo;
+        System.out.println(lo);
         //petla obliczająca sumę, min, max, liczbe pozytywnych i negatywnych ocen
         for (int rating : ratings) {
             sum += rating;
