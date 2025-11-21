@@ -1,19 +1,26 @@
 package JB.exercise;
 
+import java.math.BigInteger;
+
 public class Main {
     public static void main(String[] args) {
         //deklaracja zmiennych i typów prostych
         int sum = 0;
         int min = 1_000_000;
         int max = -100_000_000;
-        long lo = 3200000000000000000L;
+        long lo = 999999999999999999L;
         short holder ;
+        BigInteger bi = new BigInteger("123456789012345678901234567890");
         int positives = 0;
         int negatives = 0;
         int[] ratings = {5, 3, 4, 2, 1, 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5};//przykładowe oceny
 
         holder = (short)lo;
-        System.out.println(lo);
+
+        System.out.println("lo jako BigInteger: " + BigInteger.valueOf(lo));
+        System.out.println("bi: " + bi);
+        System.out.println("Suma: " + BigInteger.valueOf(lo).add(bi));
+        System.out.println(BigInteger.valueOf(lo).add(bi));
         //petla obliczająca sumę, min, max, liczbe pozytywnych i negatywnych ocen
         for (int rating : ratings) {
             sum += rating;
