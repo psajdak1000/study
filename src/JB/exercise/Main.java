@@ -5,10 +5,11 @@ import java.math.BigInteger;
 public class Main {
     public static void main(String[] args) {
         //deklaracja zmiennych i typów prostych
-        int sum = 0;
+        int sum =  10;
         int min = 1_000_000;
         int max = -100_000_000;
         long lo = 999999999999999999L;
+        byte a = 10+20;
         short holder ;
         BigInteger bi = new BigInteger("123456789012345678901234567890");
         int positives = 0;
