@@ -36,13 +36,13 @@ public class ZadaniaKrypto2 {
     }
 
     // --- ZADANIE 1: Szyfr Jednorazowy (One-Time Pad) ---
-    // [cite: 11, 12, 13]
+
     static void testZadanie1() {
         // Generujemy "Książkę kodową" - 5 kart, każda 150 znaków (10x15)
         List<String> ksiazkaKodowa = new ArrayList<>();
         Random rand = new Random();
 
-        // Tworzenie kart [cite: 14]
+        // Tworzenie kart
         for (int i = 0; i < 5; i++) {
             StringBuilder karta = new StringBuilder();
             for (int j = 0; j < 150; j++) {
@@ -69,7 +69,7 @@ public class ZadaniaKrypto2 {
     }
 
     // --- ZADANIE 2: Szyfr Paskowy ---
-    // [cite: 16, 17]
+
     static void testZadanie2() {
         // Symulacja pasków - każdy pasek to losowo wymieszany alfabet
         String[] paski = {

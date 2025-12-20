@@ -4,11 +4,9 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class ZadaniaKrypto3 {
 
-    static Scanner scanner = new Scanner(System.in);
     static Random rand = new Random();
 
     public static void main(String[] args) {
@@ -30,39 +28,39 @@ public class ZadaniaKrypto3 {
     }
 
     // -----------------------------------------------------------------
-    // ZADANIE 1: LFSR [cite: 28, 29]
+    // ZADANIE 1:
     // -----------------------------------------------------------------
     public static void zadanie1_LFSR() {
-        // Dane wejściowe (sztywne dla uproszczenia, można zmienić na Scanner)
-        String stanRejestru = "10101100101"; // [cite: 31]
-        int[] tapy = {0, 3, 5};             // [cite: 33] - indeksy bitów do XOR (liczymy od lewej 0..N)
-        String wiadomosc = "KRYPTO";        // [cite: 35]
+
+        String stanRejestru = "10101100101";
+        int[] tapy = {0, 3, 5};             //  - indeksy bitów do XOR (liczymy od lewej 0..N)
+        String wiadomosc = "KRYPTO";
 
         System.out.println("Stan początkowy: " + stanRejestru);
         System.out.println("Wiadomość: " + wiadomosc);
 
-        // 1. Zamiana wiadomości na bity [cite: 43]
+        // 1. Zamiana wiadomości na bity
         StringBuilder bityWiadomosci = new StringBuilder();
         for (char c : wiadomosc.toCharArray()) {
             // Formatujemy do 8 bitów (np. 01000001)
             bityWiadomosci.append(String.format("%8s", Integer.toBinaryString(c)).replace(' ', '0'));
         }
         String tekstBity = bityWiadomosci.toString();
-        int dlugoscStrumienia = tekstBity.length(); // [cite: 34]
+        int dlugoscStrumienia = tekstBity.length();
 
-        // 2. Generowanie klucza strumieniowego [cite: 37]
+        // 2. Generowanie klucza strumieniowego
         String kluczStrumieniowy = generujLFSR(stanRejestru, tapy, dlugoscStrumienia);
         System.out.println("Wygenerowany klucz (LFSR): " + kluczStrumieniowy);
 
-        // 3. Szyfrowanie (XOR tekstu z kluczem) [cite: 42]
+        // 3. Szyfrowanie (XOR tekstu z kluczem)
         String kryptogram = xorString(tekstBity, kluczStrumieniowy);
-        System.out.println("Zaszyfrowane (binarnie):   " + kryptogram); // [cite: 45]
+        System.out.println("Zaszyfrowane (binarnie):   " + kryptogram);
 
-        // 4. Deszyfracja [cite: 46]
-        // Ponowne użycie klucza (LFSR jest deterministyczny) [cite: 47]
-        String odszyfrowaneBity = xorString(kryptogram, kluczStrumieniowy); // [cite: 48]
+        // 4. Deszyfracja
+        // Ponowne użycie klucza (LFSR jest deterministyczny)
+        String odszyfrowaneBity = xorString(kryptogram, kluczStrumieniowy);
 
-        // Konwersja bitów na tekst [cite: 49]
+        // Konwersja bitów na tekst
         StringBuilder odszyfrowanyTekst = new StringBuilder();
         for (int i = 0; i < odszyfrowaneBity.length(); i += 8) {
             String bajt = odszyfrowaneBity.substring(i, i + 8);
@@ -77,10 +75,10 @@ public class ZadaniaKrypto3 {
         // Pracujemy na tablicy znaków dla łatwości zmian
         StringBuilder stan = new StringBuilder(rejestr);
 
-        System.out.println("--- Kroki LFSR (pierwsze 5) ---"); // [cite: 40]
+        System.out.println("--- Kroki LFSR (pierwsze 5) ---");
 
         for (int i = 0; i < dlugosc; i++) {
-            // a. Policz bit sprzężenia (XOR z tapów) [cite: 38]
+            // a. Policz bit sprzężenia (XOR z tapów)
             int nowyBit = 0;
             for (int tapIndex : tapy) {
                 // Pobieramy bit z pozycji 'tapIndex'. '0' -> 0, '1' -> 1
@@ -93,7 +91,7 @@ public class ZadaniaKrypto3 {
             // ale tutaj dla uproszczenia użyjemy nowego bitu jako elementu strumienia.
             strumien.append(nowyBit);
 
-            // b. Przesuń rejestr [cite: 39] i c. Dodaj nowy bit na początek [cite: 53]
+            // b. Przesuń rejestr  i c. Dodaj nowy bit na początek
             stan.deleteCharAt(stan.length() - 1); // Usuwamy ostatni
             stan.insert(0, nowyBit);              // Wstawiamy nowy na początek
 
@@ -111,7 +109,7 @@ public class ZadaniaKrypto3 {
     }
 
     // -----------------------------------------------------------------
-    // ZADANIE 2: Prosty Hash [cite: 56]
+    // ZADANIE 2: Prosty Hash
     // -----------------------------------------------------------------
     public static void zadanie2_Hash() {
         String tekst1 = "haslo123";
@@ -132,11 +130,11 @@ public class ZadaniaKrypto3 {
         System.out.println("Hash(" + tekst1 + ") = " + hashModulo(tekst1));
         System.out.println("Hash(" + tekst2 + ") = " + hashModulo(tekst2));
 
-        // [cite: 66] Propozycja rozbudowania: Metoda Modulo + Sól (Salt)
-        System.out.println("--- Metoda 4 (Rozbudowana): Modulo z solą [cite: 66] ---");
+        //  Propozycja rozbudowania: Metoda Modulo + Sól (Salt)
+        System.out.println("--- Metoda 4 (Rozbudowana): Modulo z solą ---");
         System.out.println("Hash(" + tekst1 + ") = " + hashModuloZSola(tekst1, 12345));
 
-        System.out.println("Wniosek: Suma ASCII i XOR dają często kolizje dla anagramów. Modulo jest lepsze."); // [cite: 67]
+        System.out.println("Wniosek: Suma ASCII i XOR dają często kolizje dla anagramów. Modulo jest lepsze.");
     }
 
     static int hashSumaASCII(String s) {
@@ -153,9 +151,9 @@ public class ZadaniaKrypto3 {
 
     static long hashModulo(String s) {
         long h = 0;
-        long p = 9973; // [cite: 63]
+        long p = 9973;
         for (char c : s.toCharArray()) {
-            // Wzór: h = (h * 31 + c) mod p [cite: 62]
+            // Wzór: h = (h * 31 + c) mod p
             h = (h * 31 + c) % p;
         }
         return h;
@@ -166,22 +164,22 @@ public class ZadaniaKrypto3 {
     }
 
     // -----------------------------------------------------------------
-    // ZADANIE 3: Proste RSA [cite: 70]
+    // ZADANIE 3: Proste RSA
     // -----------------------------------------------------------------
     public static void zadanie3_RSA() {
-        // 1. Wylosuj małe liczby pierwsze p i q (10-300) [cite: 72, 73]
+        // 1. Wylosuj małe liczby pierwsze p i q (10-300)
         int p = generujLiczbePierwsza(10, 300);
         int q = generujLiczbePierwsza(10, 300);
-        while (p == q) q = generujLiczbePierwsza(10, 300); // [cite: 75]
+        while (p == q) q = generujLiczbePierwsza(10, 300);
 
         System.out.println("Wylosowane liczby: p=" + p + ", q=" + q);
 
-        // 2. Obliczenia n i phi [cite: 76]
+        // 2. Obliczenia n i phi
         BigInteger n = BigInteger.valueOf(p).multiply(BigInteger.valueOf(q));
         BigInteger phi = BigInteger.valueOf(p - 1).multiply(BigInteger.valueOf(q - 1));
         System.out.println("Moduł n=" + n + ", phi=" + phi);
 
-        // 3. Wybierz e (1 < e < phi, gcd(e, phi) == 1) [cite: 77, 78, 79]
+        // 3. Wybierz e (1 < e < phi, gcd(e, phi) == 1)
         BigInteger e = BigInteger.valueOf(3);
         while (e.compareTo(phi) < 0) {
             if (e.gcd(phi).equals(BigInteger.ONE)) break;
@@ -189,12 +187,12 @@ public class ZadaniaKrypto3 {
         }
         System.out.println("Klucz publiczny e=" + e);
 
-        // 4. Oblicz klucz prywatny d [cite: 80]
+        // 4. Oblicz klucz prywatny d
         // d = e^(-1) mod phi
         BigInteger d = e.modInverse(phi);
         System.out.println("Klucz prywatny d=" + d);
 
-        // 5. Zaszyfruj wiadomość [cite: 81]
+        // 5. Zaszyfruj wiadomość
         // Uwaga: Ponieważ liczby są małe, szyfrujemy znak po znaku (jako liczby ASCII),
         // aby upewnić się, że wartość znaku < n.
         String msg = "RSA";
@@ -209,7 +207,7 @@ public class ZadaniaKrypto3 {
         }
         System.out.println("Szyfrogram (ciąg liczb): " + kryptogram);
 
-        // 6. Odszyfruj wiadomość [cite: 82]
+        // 6. Odszyfruj wiadomość
         StringBuilder odszyfrowane = new StringBuilder();
         for (BigInteger c : kryptogram) {
             // m = c^d mod n
@@ -226,7 +224,7 @@ public class ZadaniaKrypto3 {
         }
     }
 
-    private static boolean czyPierwsza(int n) { // [cite: 74] - test pierwszości
+    private static boolean czyPierwsza(int n) { //  test pierwszości
         if (n < 2) return false;
         for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) return false;
@@ -235,21 +233,21 @@ public class ZadaniaKrypto3 {
     }
 
     // -----------------------------------------------------------------
-    // ZADANIE 4: Symulacja Diffie-Hellmana [cite: 84]
+    // ZADANIE 4: Symulacja Diffie-Hellmana
     // -----------------------------------------------------------------
     public static void zadanie4_DiffieHellman() {
         // Parametry publiczne (duże liczby dla bezpieczeństwa, tu mniejsze dla przykładu)
-        BigInteger p = BigInteger.valueOf(23); // Moduł (liczba pierwsza) [cite: 87]
-        BigInteger g = BigInteger.valueOf(5);  // Podstawa (generator) [cite: 87]
+        BigInteger p = BigInteger.valueOf(23); // Moduł (liczba pierwsza)
+        BigInteger g = BigInteger.valueOf(5);  // Podstawa (generator)
 
         System.out.println("Publiczne p=" + p + ", g=" + g);
 
-        // 1. Sekrety użytkowników [cite: 88]
+        // 1. Sekrety użytkowników
         BigInteger a = BigInteger.valueOf(4); // Sekret Alicji
         BigInteger b = BigInteger.valueOf(3); // Sekret Boba
         System.out.println("Sekret Alicji a=" + a + ", Sekret Boba b=" + b);
 
-        // 2. Wymiana wartości publicznych (A i B) [cite: 89]
+        // 2. Wymiana wartości publicznych (A i B)
         // A = g^a mod p
         BigInteger A = g.modPow(a, p);
         // B = g^b mod p
@@ -257,7 +255,7 @@ public class ZadaniaKrypto3 {
         System.out.println("Alicja wysyła A=" + A);
         System.out.println("Bob wysyła B=" + B);
 
-        // 3. Obliczanie wspólnego klucza sesyjnego [cite: 90]
+        // 3. Obliczanie wspólnego klucza sesyjnego
         // Alicja liczy: s = B^a mod p
         BigInteger sa = B.modPow(a, p);
         // Bob liczy: s = A^b mod p

@@ -1,17 +1,16 @@
 package kryptografiaPrzyklady.zad1;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class ZadaniaKryptografia {
+
+public class ZadaniaKrypto1 {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
 
         System.out.println("=== ZADANIE 1 i 2: Szyfr Cezara / ROT-n ===");
-        // Zadanie 1: Program generujący szyfr Cezara [cite: 1]
-        // Zadanie 2: Ulepszenie do ROT-n (dowolne przesunięcie) [cite: 3]
+        // Zadanie 1: Program generujący szyfr Cezara
+        // Zadanie 2: Ulepszenie do ROT-n (dowolne przesunięcie)
         String tekstJawny = "ALA MA KOTA";
         int przesuniecie = 3; // Klasyczny Cezar
 
@@ -19,13 +18,13 @@ public class ZadaniaKryptografia {
         System.out.println("Tekst: " + tekstJawny);
         System.out.println("Szyfr (ROT-" + przesuniecie + "): " + zaszyfrowane);
 
-        // Funkcja odszyfrowująca [cite: 2]
+        // Funkcja odszyfrowująca
         String odszyfrowane = cezaraDeszyfruj(zaszyfrowane, przesuniecie);
         System.out.println("Odszyfrowane: " + odszyfrowane);
 
         System.out.println("\n=== ZADANIE 3: Deszyfrowanie podanych wiadomości ===");
-        // Zadanie 3: Deszyfruj podane wiadomości [cite: 5]
-        String[] kryptogramy = {"ZLDGRPRVF", "GR", "RGFCBWDQLD"}; // [cite: 6, 7, 8]
+        // Zadanie 3: Deszyfruj podane wiadomości
+        String[] kryptogramy = {"ZLDGRPRVF", "GR", "RGFCBWDQLD"};
 
         System.out.println("Próba łamania (zakładamy przesunięcie Cezara n=3):");
         for (String krypto : kryptogramy) {
@@ -34,7 +33,7 @@ public class ZadaniaKryptografia {
         }
 
         System.out.println("\n=== ZADANIE 4: Szyfr Komórkowy ===");
-        // Zadanie 4: Szyfrator/deszyfrator komórkowy [cite: 9]
+        // Zadanie 4: Szyfrator/deszyfrator komórkowy
         String doKomorki = "DZIEN";
         String smsKod = komorkowySzyfruj(doKomorki);
         System.out.println("Tekst: " + doKomorki);
@@ -42,7 +41,7 @@ public class ZadaniaKryptografia {
         System.out.println("Dekodowanie: " + komorkowyDeszyfruj(smsKod));
 
         System.out.println("\n=== ZADANIE 5: Szyfr Playfaira ===");
-        // Zadanie 5: Szyfrator/deszyfrator Playfaira [cite: 10]
+        // Zadanie 5: Szyfrator/deszyfrator Playfaira
         String klucz = "MONARCHY";
         String wiadomoscPlayfair = "INSTRUMENT";
 
@@ -118,7 +117,7 @@ public class ZadaniaKryptografia {
                     break;
                 }
             }
-            // Obsługa cyfr zgodnie z[cite: 9]: "cyfra kodowana ostatnim znakiem"
+            // Obsługa cyfr zgodnie z : "cyfra kodowana ostatnim znakiem"
             // Interpretacja: Aby wpisać "2", wciskamy klawisz 2 cztery razy (A,B,C,2)
             if (!znaleziono && Character.isDigit(c)) {
                 int cyfra = c - '0';
