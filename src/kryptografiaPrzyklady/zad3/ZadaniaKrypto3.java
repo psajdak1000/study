@@ -118,15 +118,15 @@ public class ZadaniaKrypto3 {
         System.out.println("Tekst 1: " + tekst1);
         System.out.println("Tekst 2: " + tekst2);
 
-        System.out.println("--- Metoda 1: Suma ASCII [cite: 59] ---");
+        System.out.println("--- Metoda 1: Suma ASCII  ---");
         System.out.println("Hash(" + tekst1 + ") = " + hashSumaASCII(tekst1));
         System.out.println("Hash(" + tekst2 + ") = " + hashSumaASCII(tekst2));
 
-        System.out.println("--- Metoda 2: XOR [cite: 60] ---");
+        System.out.println("--- Metoda 2: XOR  ---");
         System.out.println("Hash(" + tekst1 + ") = " + hashXOR(tekst1));
         System.out.println("Hash(" + tekst2 + ") = " + hashXOR(tekst2));
 
-        System.out.println("--- Metoda 3: Modulo liczba pierwsza (Wielomianowy) [cite: 61] ---");
+        System.out.println("--- Metoda 3: Modulo liczba pierwsza (Wielomianowy)  ---");
         System.out.println("Hash(" + tekst1 + ") = " + hashModulo(tekst1));
         System.out.println("Hash(" + tekst2 + ") = " + hashModulo(tekst2));
 
