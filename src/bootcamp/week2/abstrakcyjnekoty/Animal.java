@@ -1,4 +1,4 @@
-package bootcamp.week2;
+package bootcamp.week2.abstrakcyjnekoty;
 
 public class Animal {
     private String name;
