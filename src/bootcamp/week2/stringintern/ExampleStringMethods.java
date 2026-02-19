@@ -2,7 +2,9 @@ package bootcamp.week2.stringintern;
 
 public class ExampleStringMethods {
     public static void main(String[] args) {
-        //42minuta lekcja #9
+        //uzywanie method jako klarownego opisu dzialania, nawet przy jednokrotnym wywolaniu
+
+
         String a = "zajavka";
         System.out.println("original: " + a);
         String replace = a.replace("a", "u");
@@ -17,7 +19,9 @@ public class ExampleStringMethods {
         System.out.printf(" place holder %s %n", trim);
 
         printNumber(10);
-        System.out.println("add method result: " + add(10, 1));
+        int add = add(10, 1);
+        System.out.println("add method result: " + add);
+        printNumber(add);
 
     }
 
