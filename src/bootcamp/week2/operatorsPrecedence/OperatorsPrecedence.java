@@ -1,8 +1,13 @@
 package bootcamp.week2.operatorsPrecedence;
 
 public class OperatorsPrecedence {
+    static String a = "test";
+    static String b = "test";
 
     public static void main(String[] args) {
+
+       boolean test = a != b ;
+        System.out.println(test);
         System.out.println("--- Rozpoczynamy obliczenia ---");
 
         // Struktura idealnie jak w Twoim przykładzie:
