@@ -8,6 +8,13 @@ public class Conditionals3 {
         Zadanie3.czyParzysta(22);
         Zadanie4.dniWMiesiacu(2);
         Zadanie5.dniOdPoczatkuRoku(3);
+        int a = 129;
+        int b = 50;
+        boolean bool = a < b;
+        if (bool = true) System.out.println("TRUE");
+        else System.out.println("FALSE");
+
+
     }
     public class Zadanie1 {
         public static void sprawdzRok(int rok) {
