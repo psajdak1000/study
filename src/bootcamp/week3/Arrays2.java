@@ -1,5 +1,8 @@
 package bootcamp.week3;
 
+import java.util.Arrays;
+
+//30min
 public class Arrays2 {
     public static void main(String[] args) {
 
@@ -14,9 +17,11 @@ public class Arrays2 {
             array[i] = "Hello new index " + i;
             i++;
         }
+        System.out.println(Arrays.toString(array));
+        System.out.println("array length: " + array.length);
 
         String completeString = "";
-        for (int k = 0; k < array.length; k++) {
+        for (int k = 0; k < array.length - 1; k++) {
             completeString += array[k] + "; ";
             System.out.println("index: " + k + " value: " + array[k]);
         }
