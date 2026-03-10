@@ -9,6 +9,9 @@ public class Arrays4 {
         printArrayElements(array);
         getMaxValue(array);
         getAvgValue(array);
+
+        String wynikTernaryOperator = array.length > 5 ? "Array has more than 5 elements" : "Array has 5 or fewer elements";
+        System.out.println("\n" + wynikTernaryOperator);
     }
 
     private static void getAvgValue(int[] array) {
