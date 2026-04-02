@@ -5,27 +5,22 @@ public class Petle {
 //        silnia(10);
 //        palindrom("alaala");
 //        palindrom("pies");
-        choinka(2);
+        tree(4);
     }
 
-    private static void choinka(int numbInFloor) {
-        if (numbInFloor%2 == 0){
-            String choinka = "";
-            String emptySpaces = "  ";
-            String twoSigns ="##";
-
-            for (int i = 0; i < numbInFloor ; i++) {
-                choinka = choinka  + twoSigns;
-                for (int j = numbInFloor; j > 0;  j--) {
-                    emptySpaces = emptySpaces + emptySpaces;
-                    System.out.print(emptySpaces);
-                }
-
-                System.out.println(choinka);
+    private static void tree(int heigth) {
+        int width = 1;
+        int spaceNumber = heigth - 1;
+        for (int i = 0; i < heigth; i++) {
+            for (int j = 0; j < spaceNumber; j++) {
+                System.out.print(" ");
             }
-        }else{
-
-            String sign = "#";
+            for (int j = 0; j < width; j++) {
+                System.out.print("*");
+            }
+            spaceNumber--;
+            width += 2;
+            System.out.println();
         }
     }
 
