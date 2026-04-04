@@ -1,4 +1,4 @@
-package bootcamp.week3.zadPetle;
+package bootcamp.week3.zadPetleTablice;
 
 public class Petle {
     public static void main(String[] args) {
@@ -10,10 +10,43 @@ public class Petle {
 //        checkMarkerPenColour();
 //        prime10000();
 //        arithmeticSequence(10);
-        fibonacciSequence(10);
+//        fibonacciSequence(10);
+        printerOfHashSigns();
+
+    }
+
+    private static void printerOfHashSigns() {
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 1; j <4; j++) {
+                System.out.print(i);
+            }
+            System.out.println();
+            for (int j = 0; j < 4; j++) {
+                for (int g = 0; g < 4; g++) {
+                    char hash ='#';
+                    System.out.print(hash);
+                }
+                System.out.println();
+            }
+
+
+
+        }
+
     }
 
     private static void fibonacciSequence(int finalLenght) {
+        //
+        int x1 = 0;
+        int x2 = 1;
+        int temp = 0;
+        System.out.println(" First Number of element in sequence:: " + x1 + "\nSecond element: " + x2);
+        for (int i = 3; i <= finalLenght; i++) {
+            temp = x1 + x2;
+            System.out.println("Number of element in sequence: " + i + " element value: " + temp );
+            x1 = x2;
+            x2 = temp;
+        }
 
     }
 
